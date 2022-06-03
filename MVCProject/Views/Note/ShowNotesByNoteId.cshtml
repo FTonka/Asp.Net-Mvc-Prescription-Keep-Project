@@ -1,0 +1,48 @@
+﻿@using EntityLayer.Concrete
+@model List<Note>
+
+@{
+    ViewData["Title"] = "ShowNotesByNoteId";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+}
+<style>
+    #date{
+        text-align:center;
+        color:#b5b5b5;
+    }
+    #geoLocation{
+        color:#b5b5b5;
+        margin-top:30px;
+        text-align:center;
+        display:inline;
+        text-align:center;
+    }
+    #content{
+       margin-top:25px;
+       font-size:1.5rem;
+
+    }
+    #noteInfo{
+        text-align:center;
+    }
+</style>
+
+@foreach(var notes in Model)
+{
+   
+    <div class="container" id="noteInfo">
+                <h1>@notes.NoteTitle</h1>
+                <p id="content">@notes.NoteContent</p>
+                <p id="geoLocation">@notes.NoteGeoLocation</p>
+            <p id="date">@notes.NoteCreateDate</p>
+            
+ 
+        
+        </div>
+
+
+}
+
+
+
+

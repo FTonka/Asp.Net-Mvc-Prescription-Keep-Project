@@ -1,0 +1,143 @@
+﻿@model EntityLayer.Concrete.Employee
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/RLayout.cshtml";
+}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous">
+ </script>
+ <title>Kayıt Ol</title>
+
+<section class="main-content-w3layouts-agileits">
+		<div class="container">
+			<h3 class="tittle">Kayıt Ol</h3>
+				<div class="inner-sec">
+			<div class="login p-5 bg-light mx-auto mw-100">
+				@using(Html.BeginForm("Index","Register",FormMethod.Post)){
+						<div class="form-row">
+
+								<div class="col-md-6 mb-3">
+
+									<label for="validationCustom01">İsim</label>
+									@Html.TextBoxFor(x=>x.EmployeeName,new {@class="form-control"})
+									@Html.ValidationMessageFor(x=>x.EmployeeName,"",new {@class="text-danger"})
+								
+								</div>
+
+								<div class="col-md-6 mb-3">
+										
+									<label for="validationCustom02">Soyisim</label>
+									@Html.TextBoxFor(x=>x.EmployeeSurname,new {@class="form-control"})
+									@Html.ValidationMessageFor(x=>x.EmployeeSurname,"",new {@class="text-danger"})
+								
+								</div>
+							</div>
+						<div class="form-row">
+
+								<div class="col-md-6 mb-3">
+
+									<label for="validationCustom03">Email</label>
+									@Html.TextBoxFor(x=>x.EmployeeMail,new {@class="form-control"})
+									@Html.ValidationMessageFor(x=>x.EmployeeMail,"",new {@class="text-danger"})
+								
+								</div>
+
+								<div class="col-md-6 mb-3">
+										
+									<label for="validationCustom04">Şifre</label>
+									@Html.TextBoxFor(x=>x.EmployeePassword,new {@class="form-control" ,@type="password"})
+									@Html.ValidationMessageFor(x=>x.EmployeePassword,"",new {@class="text-danger"})
+								
+								</div>
+							</div>		
+							
+							<div class="form-row">
+									
+								<div class="col-md-5 mb-3">
+
+									<label for="validationCustom05">Doğum Günü</label>
+									@Html.TextBoxFor(x=>x.EmployeeBirthdate,new {@class="form-control"})
+									@Html.ValidationMessageFor(x=>x.EmployeeBirthdate,"",new {@class="text-danger"})
+								
+								</div>
+							
+								<div class="col-md-2 mb-3 text-center" >
+										
+									<label for="validationCustom06">Cinsiyet</label>
+									<br>
+									@Html.RadioButtonFor(x=>x.EmployeeGender,"E") E
+									<br>
+									@Html.RadioButtonFor(x=>x.EmployeeGender,"K") K
+									
+								</div>
+
+								
+
+								<div class="col-sm-5 mb-3">
+										
+									<label for="validationCustom07">Telefon No</label>
+									@Html.TextBoxFor(x=>x.EmployeeTelNumber,new {@class="form-control"})
+									@Html.ValidationMessageFor(x=>x.EmployeeTelNumber,"",new {@class="text-danger"})
+								
+								</div>
+							</div>
+
+
+							<div class="form-row">
+								
+								<div class="form-group col-md-12">
+									<label for="adress" mb-2">Adres</label>
+									@Html.TextBoxFor(x=>x.EmployeeAddress,new {@class="form-control"})
+									@Html.ValidationMessageFor(x=>x.EmployeeAddress,"",new {@class="text-danger"})
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="departman mb-2">Şirket</label>
+									@Html.TextBoxFor(x=>x.EmployeesCompany,new {@class="form-control"})
+									@Html.ValidationMessageFor(x=>x.EmployeesCompany,"",new {@class="text-danger"})
+								</div>
+
+
+								<div class="form-group col-md-6">
+										<label for="departman mb-2">Departman</label>
+									@Html.TextBoxFor(x=>x.EmployeesDepartment,new {@class="form-control"})
+									@Html.ValidationMessageFor(x=>x.EmployeesDepartment,"",new {@class="text-danger"})
+								</div>
+								
+							</div>
+							
+
+					<form onsubmit="return checkForm(this);">
+						<p><input type="checkbox" name="terms"> Tüm <u> Koşulları Ve Şartları </u>Okudum,Kabul Ediyorum.</p>
+						<p><input type="submit" value="Kaydol"></p>
+					</form>
+						}
+							
+					</div>
+
+			</div>
+		</div>
+
+	</section>
+
+
+<script type="text/javascript">
+
+  function checkForm(form)
+  {
+    if(!form.terms.checked) {
+      alert("Lütfen Koşulları Ve Şartları Kabul Ettiğinizi Belirtin");
+      form.terms.focus();
+      return false;
+    }
+    return true;
+  }
+</script>
+
+

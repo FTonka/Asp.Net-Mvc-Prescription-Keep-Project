@@ -1,0 +1,56 @@
+﻿@using EntityLayer.Concrete
+@model List<Note>
+@{
+    ViewData["Title"] = "ShowNotesByEId";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<style>
+    #tablo{
+        width:80%;
+       overflow:auto; 
+    }
+    #satir:hover{
+        border-radius:6px;
+        padding:10px;
+        background-color:lightgrey;
+        cursor:pointer;
+    }
+    tr th{
+        text-align:center;
+    }
+</style>
+
+<table class="table " id="tablo">
+    <tr>
+        <th>ID</th>
+        <th>Not Başlığı</th>
+        <th>Coğrafik Lokasyon</th>
+        <th>Oluşturulma Tarihi</th>
+        <th>Doktor</th>
+        <th>Düzenle</th>
+        <th>Sil</th>
+        <th>İncele</th>
+    </tr>
+    @foreach (var notes in Model)
+    {
+       
+       <tr id="satir"> 
+        
+        <td>@notes.NoteID</td>
+        <td>@notes.NoteTitle</td>
+        <td>@notes.NoteGeoLocation.Substring(0,notes.NoteGeoLocation.IndexOf(" "))</td>
+        <td>@notes.NoteCreateDate</td>
+        <td>Dr.@notes.Doctor.DoctorName</td>
+        <td><a href="/Note/EditNote/@notes.NoteID" class="btn btn-warning"><i class="fas fa-edit"></i></a></td>
+        <td><a href="/Note/DeleteNote/@notes.NoteID" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+        <td><a href="/Note/ShowNotesByNoteId/@notes.NoteID" class="btn btn-dark">İncele</a></td> 
+        
+       </tr>
+       
+    }
+    
+</table>
+
+
+

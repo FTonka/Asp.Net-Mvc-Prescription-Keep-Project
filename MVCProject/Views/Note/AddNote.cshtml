@@ -1,0 +1,28 @@
+﻿@model EntityLayer.Concrete.Note
+@{
+    ViewData["Title"] = "AddNote";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+}
+
+ <title>Kayıt Ol</title>
+
+				@using(Html.BeginForm("AddNote","Note",FormMethod.Post)){
+
+									<label for="NoteTitle">Not Başlığı</label>
+									@Html.TextBoxFor(x=>x.NoteTitle,new {@class="form-control"})
+									@Html.ValidationMessageFor(x=>x.NoteTitle,"",new {@class="text-danger"})
+
+									<br />
+									 @Html.Label("DoctorID")
+									 @Html.DropDownListFor(x=>x.DoctorID,(List<SelectListItem>)ViewBag.cv,new {@class ="form-control"})
+									 @Html.ValidationMessageFor(x=>x.DoctorID)
+									 <br />
+									 										
+									<label for="NoteContent">Not İçeriği</label>
+									@Html.TextAreaFor(x=>x.NoteContent,new {@class="form-control"})
+									@Html.ValidationMessageFor(x=>x.NoteContent,"",new {@class="text-danger"})
+									<br />
+
+									<button class="btn btn-primary">Notu Kaydet</button>
+								}
+
